@@ -2,21 +2,27 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <IsPackable>false</IsPackable>
+        <IsPackable>true</IsPackable>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
 
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
-
         <RootNamespace>RecordIndexerGenerator</RootNamespace>
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <PackageId>RecordIndexerGenerator</PackageId>
-        
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        
+        <Title>RecordIndexerGenerator</Title>
         <Authors>Anders Kehlet</Authors>
-        
         <Copyright>2023 Anders Kehlet</Copyright>
+        <Version>1.0.0</Version>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/Serdan/RecordIndexerGenerator</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Serdan/RecordIndexerGenerator</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,5 +34,8 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.6.0" PrivateAssets="all"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers\dotnet\cs" Visible="false"/>
+    </ItemGroup>
 
 </Project>
